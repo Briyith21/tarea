@@ -1,3 +1,20 @@
+productos = []
+
+def agregar_producto():
+  nombre = str(input("Nombre del producto"))
+  precio = int(input("Ingrese precio"))
+  stock = int(input("Cantidad stock"))
+
+  plantilla = {
+    "nombre": nombre,
+    "precio": precio,
+    "stock": stock,
+  }
+
+  productos.append(plantilla)
+
+  print("Producto agregado!")
+
 while True:
   print("========================================")
   print("   SISTEMA MINIMARKET 'LOS ANDES'")
@@ -6,17 +23,14 @@ while True:
   print("2. Buscar")
   print("3. Stock crítico")
   print("4. Calcular valor")
-  print("5. Salir")
+  print("5. Ver productos")
+  print("6. Salir")
         
-  opcion = input("Seleccione una opción (1-5): ")
+  opcion = input("Seleccione una opción")
 
-  if opcion == 1:
+  if opcion == "1":
     agregar_producto()
-  elif opcion == 2:
-    buscar_producto()
-  elif opcion == 3:
-    stock_critico()
-  elif opcion == 4:
-    calcular()
-  elif opcion == 5:
+  elif opcion == "5":
+    print(productos)
+  elif opcion == "6":
     break
