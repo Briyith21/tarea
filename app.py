@@ -1,6 +1,20 @@
 
 inventario = [
-    
+    {
+        "nombre": "Briyith",
+        "precio": 0.1,
+        "stock": 67,
+    },
+    {
+        "nombre": "Christian",
+        "precio": 0,
+        "stock": 6,
+    },
+    {
+        "nombre": "Pepe",
+        "precio": 0.9,
+        "stock": 7,
+    },
 ]
 
 def crear_producto():
@@ -60,18 +74,27 @@ def buscar_producto(nombre):
 
 def stock_critico():
     if len(inventario) > 0:
+        critico = []
         for item in inventario:
-            critico = []
             if item["stock"] < 5:
                 critico.append(item)
-            else:
-                print("\n" * 40 + "=" * 40 + "")
-                print("     ❌ NO HAY PRODUCTOS CRITICOS")
-                print("=" * 40 + "")
+        if len(critico) > 0:
+            print("\n" * 40 + "=" * 40 + "")
+            print("     ✅ HAY PRODUCTOS CRITICOS")
+            print("=" * 40 + "")
+            for item in critico:
+                print(f"Nombre: {item['nombre']} | Precio S/.{item['precio']} | Stock: {item['stock']} und")
+        else:
+            print("\n" * 40 + "=" * 40 + "")
+            print("     ❌ NO HAY PRODUCTOS CRITICOS")
+            print("=" * 40 + "")
+            
     else:
         print("\n" * 40 + "=" * 40 + "")
         print("     ❌ NO HAY INVENTARIO")
         print("=" * 40 + "")
+
+    input("\n---> Presiona cualquier tecla para regresar al menú ")
 
 while True:
     print("\n" * 40 + "=" * 40 + "")
