@@ -1,5 +1,7 @@
 
-inventario = []
+inventario = [
+    
+]
 
 def crear_producto():
     print("\n" * 40 + "=" * 40 + "")
@@ -23,6 +25,21 @@ def crear_producto():
     print(f"Nombre: {plantilla['nombre']} | Precio S/.{plantilla['precio']} | Stock: {plantilla['stock']} und")
     input("\n---> Presiona cualquier tecla para regresar al menú ")
 
+def stock():
+    if len(inventario) > 0:
+        contador = 1
+        print("\n" * 40 + "=" * 40 + "")
+        print(f"     Hay ({len(inventario)}) productos en tu inventario")
+        print("=" * 40 + "\n")
+        for item in inventario:
+            print(f"Nombre: {item['nombre']} | Precio S/.{item['precio']} | Stock: {item['stock']} und")
+            contador += 1
+    else:
+        print("\n" * 40 + "=" * 40 + "")
+        print("     ❌ NO HAY INVENTARIO")
+        print("=" * 40 + "\n")
+    input("\n---> Presiona cualquier tecla para regresar al menú ")
+
 def buscar_producto(nombre):
     encontrado = False
     for item in inventario:
@@ -41,21 +58,20 @@ def buscar_producto(nombre):
 
     input("\n---> Presiona cualquier tecla para regresar al menú ")
 
-def stock():
+def stock_critico():
     if len(inventario) > 0:
-        contador = 1
-        print("\n" * 40 + "=" * 40 + "")
-        print(f"     Hay ({len(inventario)}) productos en tu inventario")
-        print("=" * 40 + "\n")
         for item in inventario:
-            print(f"Nombre: {item['nombre']} | Precio S/.{item['precio']} | Stock: {item['stock']} und")
-            contador += 1
+            critico = []
+            if item["stock"] < 5:
+                critico.append(item)
+            else:
+                print("\n" * 40 + "=" * 40 + "")
+                print("     ❌ NO HAY PRODUCTOS CRITICOS")
+                print("=" * 40 + "")
     else:
         print("\n" * 40 + "=" * 40 + "")
         print("     ❌ NO HAY INVENTARIO")
-        print("=" * 40 + "\n")
-    input("\n---> Presiona cualquier tecla para regresar al menú ")
-
+        print("=" * 40 + "")
 
 while True:
     print("\n" * 40 + "=" * 40 + "")
@@ -64,6 +80,8 @@ while True:
     print("1) Crear producto")
     print("2) Ver stock")
     print("3) Buscar producto")
+    print("4) Stock critico")
+    print("5) Valor total")
     print("5) Cerrar programa")
 
     opcion = int(input("\n---> Ingrese una opcion: "))
@@ -75,5 +93,9 @@ while True:
     elif opcion == 3:
         nombre = input("---> Ingrese nombre del producto a buscar: ")
         buscar_producto(nombre)
+    elif opcion == 4:
+        stock_critico()
+    elif opcion == 5:
+        valor_total()
     elif opcion == 5:
         break
